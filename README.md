@@ -3,6 +3,12 @@ An All-In-One OS for the M5 Cardputer
 
 This is my first time making a program for an M5 device, so bare with me on any issues. The goal is to get all of the features for it made, and then refactor it into a cleaner code set with a better UI.
 
+> # SnailOS Links/Info:
+>
+> **- Discord Server:**
+>
+> **- SnailHub Program:** A PC program made to the extend the use of the Cardputer & SnailOS
+
 # SnailOS Beta v0.1 Features:
 
 > ## :gear: Settings Features:
