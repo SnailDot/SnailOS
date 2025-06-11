@@ -8,6 +8,8 @@ This is my first time making a program for an M5 device, so bare with me on any 
 > **- Discord Server:**
 >
 > **- SnailHub Program:** A PC program made to the extend the use of the Cardputer & SnailOS
+>
+> **- Snails Store:** 
 
 # SnailOS Beta v0.1 Features:
 
