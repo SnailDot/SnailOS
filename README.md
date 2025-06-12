@@ -1,4 +1,4 @@
-# SnailOS-Beta
+# SnailOS-Beta :snail: 
 An All-In-One OS for the M5 Cardputer
 
 This is my first time making a program for an M5 device, so bare with me on any issues. The goal is to get all of the features for it made, and then refactor it into a cleaner code set with a better UI.
@@ -11,7 +11,7 @@ This is my first time making a program for an M5 device, so bare with me on any 
 >
 > **- Snails Store:**
 
-# SnailOS v0.1 Features:
+# SnailOS v0.1 Features :snail: :
 
 > ## :gear: Settings Features:
 > 
@@ -51,7 +51,7 @@ This is my first time making a program for an M5 device, so bare with me on any 
 
 -----------------------------------
 
-> # :wireless: Connections
+> # :snail: Connections
 > 
 > **- WebGUI:** Will run a website on a wifi network that allows you to use your M5 Device/SnailOS from that website
 
