@@ -51,7 +51,7 @@ This is my first time making a program for an M5 device, so bare with me on any 
 
 -----------------------------------
 
-> # :snail: Connections
+> # :computer: Connections
 > 
 > **- WebGUI:** Will run a website on a wifi network that allows you to use your M5 Device/SnailOS from that website
 
