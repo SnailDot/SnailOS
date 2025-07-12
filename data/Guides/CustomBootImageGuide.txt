@@ -1,0 +1,1 @@
+To use a custom boot image, move a .jpg file into SnailOS/Assets, and rename it "Boot.jpg". If theres no image there, SnailOS will launch the text boot splash instead.

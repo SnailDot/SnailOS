@@ -1,0 +1,10 @@
+1: Audio Spectrum - An audio spectrum based on your mic - https://github.com/bmorcelli/Launcher/blob/main/Compatible%20BINs/M5Cardputer/AudioSpectrum.bin
+2: Car Dashboard - Turn your card into a card dashboard - https://github.com/bmorcelli/Launcher/blob/main/Compatible%20BINs/M5Cardputer/CarDashboard-Volos.bin
+3: Web Radio - Radio off of the internet - https://github.com/bmorcelli/Launcher/blob/main/Compatible%20BINs/M5Cardputer/M5Card_WebRadio.ino.bin
+4: TV Remote - Turn your card into a TV remote - https://github.com/bmorcelli/Launcher/blob/main/Compatible%20BINs/M5Cardputer/Volos-TV-Remote.bin
+5: Palnagotchi - Pawnagotchi friend - https://github.com/bmorcelli/Launcher/blob/main/Compatible%20BINs/M5Cardputer/Pawnagochi.bin
+6: Neom - Pentesting OS - https://github.com/bmorcelli/Launcher/blob/main/Compatible%20BINs/M5Cardputer/Nemo-EN-2.6.bin
+7: Bruce - Pentesting OS - https://github.com/bmorcelli/Launcher/blob/main/Compatible%20BINs/M5Cardputer/Bruce-0.7.bin
+8: Saturn - Pentesting OS - https://github.com/bmorcelli/Launcher/blob/main/Compatible%20BINs/M5Cardputer/Saturn-v1.2.1.en-us.bin
+9: Evil - Wifi Pentesting OS - https://github.com/bmorcelli/Launcher/blob/main/Compatible%20BINs/M5Cardputer/Evil-Cardputer%201.1.7.bin
+10: User Demo - Offical M5 Firmware - https://github.com/bmorcelli/Launcher/blob/main/Compatible%20BINs/M5Cardputer/UserDemo.bin
