@@ -1,0 +1,191 @@
+#include "BootFunctions.h"
+#include "DisplayTools.h"
+
+// Define the variables declared in the header
+String bootSplashImage = "/SnailOS/Assets/boot.jpg";
+String bootSplashImageAlt = "/SnailOS/Assets/Boot.jpg";
+String bootText = "SnailOS v0.1";
+String bootTextBuffer = "";
+const String configPath = "/SnailOS/Data/config.txt";
+
+bool ensureSplashImageExists() {
+    // Create directories if they don't exist
+    if (!SD.exists("/SnailOS")) {
+        if (!SD.mkdir("/SnailOS")) {
+            Serial.println("Failed to create SnailOS directory");
+            return false;
+        }
+    }
+    if (!SD.exists("/SnailOS/Assets")) {
+        if (!SD.mkdir("/SnailOS/Assets")) {
+            Serial.println("Failed to create Assets directory");
+            return false;
+        }
+    }
+    
+    // Check if either boot image exists
+    return (SD.exists(bootSplashImage) || SD.exists(bootSplashImageAlt));
+}
+
+void drawBootTextEditor() {
+    // Clear screen
+    M5.Display.fillScreen(TFT_BLACK);
+    
+    // Draw title
+    M5.Display.setTextSize(2);
+    M5.Display.setTextColor(TFT_WHITE);
+    M5.Display.setCursor(10, 10);
+    M5.Display.println("Edit Boot Text");
+    M5.Display.drawLine(10, 40, M5.Display.width() - 10, 40, TFT_WHITE);
+    
+    // Draw instructions
+    M5.Display.setTextSize(1);
+    M5.Display.setCursor(10, 50);
+    M5.Display.println("Type new boot text and press Enter");
+    M5.Display.println("Backspace/ESC to delete characters");
+    
+    // Draw input box
+    M5.Display.fillRect(10, 80, M5.Display.width() - 20, 40, TFT_DARKGREEN);
+    M5.Display.setTextSize(2);
+    M5.Display.setTextColor(TFT_WHITE);
+    M5.Display.setCursor(20, 90);
+    M5.Display.println(bootTextBuffer);
+    
+    // Draw cursor
+    int cursorX = 20 + (bootTextBuffer.length() * 12);  // Approximate width of each character
+    M5.Display.drawLine(cursorX, 90, cursorX, 110, TFT_WHITE);
+}
+
+bool saveConfig() {
+    // Create Data directory if it doesn't exist
+    if (!SD.exists("/SnailOS/Data")) {
+        if (!SD.mkdir("/SnailOS/Data")) {
+            Serial.println("Failed to create Data directory");
+            return false;
+        }
+    }
+    
+    // Open config file for writing
+    File configFile = SD.open(configPath, FILE_WRITE);
+    if (!configFile) {
+        Serial.println("Failed to open config file for writing");
+        return false;
+    }
+    
+    // Write boot text to config
+    configFile.println("bootText=" + bootText);
+    
+    configFile.close();
+    return true;
+}
+
+bool loadConfig() {
+    // Check if config file exists
+    if (!SD.exists(configPath)) {
+        Serial.println("No config file found");
+        return false;
+    }
+    
+    // Open config file for reading
+    File configFile = SD.open(configPath, FILE_READ);
+    if (!configFile) {
+        Serial.println("Failed to open config file for reading");
+        return false;
+    }
+    
+    // Read config file line by line
+    while (configFile.available()) {
+        String line = configFile.readStringUntil('\n');
+        line.trim();  // Remove whitespace
+        
+        // Check for boot text setting
+        if (line.startsWith("bootText=")) {
+            bootText = line.substring(9);  // Remove "bootText=" prefix
+        }
+    }
+    
+    configFile.close();
+    return true;
+}
+
+void displayBootScreen() {
+    M5.Display.fillScreen(TFT_BLACK);
+    if (SD.exists(bootSplashImage)) {
+        drawImage(bootSplashImage);
+        delay(4000);  // Show splash for 4 seconds
+    } else if (SD.exists(bootSplashImageAlt)) {
+        drawImage(bootSplashImageAlt);
+        delay(4000);  // Show splash for 4 seconds
+    } else {
+        // Show boot text message
+        M5.Display.setTextColor(TFT_WHITE);
+        M5.Display.setTextSize(2);
+        M5.Display.setTextDatum(middle_center);
+        M5.Display.drawString(bootText, M5.Display.width()/2, M5.Display.height()/2);
+        delay(2000);  // Show message for 2 seconds
+    }
+}
+
+void handleBootTextEditor() {
+    // Handle special keys
+    if (M5Cardputer.Keyboard.isKeyPressed(0x28)) { // Enter key
+        // Save the new boot text
+        bootText = bootTextBuffer;
+        // Save to config file
+        if (!saveConfig()) {
+            drawError("Failed to save config");
+            delay(1000);
+        }
+        // Return to display settings menu
+        currentState = DISPLAY_SETTINGS;
+        drawDisplaySettingsMenu();
+    }
+    else if (M5Cardputer.Keyboard.isKeyPressed(0x2A) || M5Cardputer.Keyboard.isKeyPressed(0x60)) { // Backspace or ESC
+        if (bootTextBuffer.length() > 0) {
+            bootTextBuffer = bootTextBuffer.substring(0, bootTextBuffer.length() - 1);
+            drawBootTextEditor();
+        } else {
+            // If buffer is empty and ESC is pressed, return to display settings
+            currentState = DISPLAY_SETTINGS;
+            drawDisplaySettingsMenu();
+        }
+    }
+    // Handle regular keys
+    else {
+        // Get the key that was pressed
+        for (int i = 0; i < 128; i++) {
+            if (M5Cardputer.Keyboard.isKeyPressed(i)) {
+                // Only accept printable ASCII characters
+                if (i >= 32 && i <= 126) {
+                    if (bootTextBuffer.length() < 32) { // Limit text length
+                        bootTextBuffer += (char)i;
+                        drawBootTextEditor();
+                    }
+                }
+                break;
+            }
+        }
+    }
+}
+
+void drawBootImage() {
+    if (SD.exists(bootSplashImage)) {
+        currentState = DISPLAY_IMAGE;
+        drawImage(bootSplashImage);
+    } else if (SD.exists(bootSplashImageAlt)) {
+        currentState = DISPLAY_IMAGE;
+        drawImage(bootSplashImageAlt);
+    } else {
+        // Show error message
+        M5.Display.fillScreen(TFT_BLACK);
+        M5.Display.setTextColor(TFT_WHITE);
+        M5.Display.setTextSize(2);
+        M5.Display.setTextDatum(middle_center);
+        M5.Display.drawString("No Boot Image Found", M5.Display.width()/2, M5.Display.height()/2 - 20);
+        M5.Display.setTextSize(1);
+        M5.Display.drawString("Place boot.jpg or Boot.jpg in", M5.Display.width()/2, M5.Display.height()/2 + 10);
+        M5.Display.drawString("/SnailOS/Assets/", M5.Display.width()/2, M5.Display.height()/2 + 30);
+        delay(2000);  // Show message for 2 seconds
+        drawDisplayTools();  // Return to display tools menu
+    }
+} 
