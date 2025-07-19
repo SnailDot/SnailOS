@@ -38,7 +38,7 @@ SnailOS is firmware for the cardputer that comes pre packed various tools like d
 
 > ## :minidisc: Your Programs
 > 
-> **- This wil list out every .bin file on your cardputer, regardless of what folder its in.
+> **- This wil list out every .bin file on your cardputer, regardless of what folder its in.**
 
 -----------------------------------
 
