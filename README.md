@@ -1,25 +1,8 @@
 # SnailOS-Beta :snail: 
-An All-In-One OS for the M5 Cardputer
 
-This is my first time making a program for an M5 device, so bare with me on any issues. The goal is to get all of the features for it made, and then refactor it into a cleaner code set with a better UI.
-
-> # SnailOS Links/Info:
->
-> **- Discord Server:**
->
-> **- SnailHub Program:** A PC program made to the extend the use of the Cardputer & SnailOS
->
-> **- Snails Store:**
+SnailOS is firmware for the cardputer that comes pre packed various tools like displaying images, downloading other firmwares, and more.
 
 # SnailOS v0.1 Features :snail: :
-
-> ## :gear: Settings Features:
-> 
-> **- Reboot:** will restart the device, and auto load back into SnailOS 
-> 
-> **- Edit Boot Text:** Allows you to edit the text that appears during launch if you dont have a boot image
-
------------------------------------
 
 > ## :tv: Display Tools
 > 
@@ -29,31 +12,39 @@ This is my first time making a program for an M5 device, so bare with me on any 
 > 
 > **- Display Boot Text:** Will Display your boot text, even if you have a boot image setup
 
+-----------------------------------
+
 > ## :loud_sound: Sound Tools
-> 
-> **- Play Test Sound:** Will play a test jingle on your device
 > 
 > **- Pre Made Sounds:** Gives you a list of built in sounds to play
 
 -----------------------------------
 
-> ## :open_file_folder: File Explorer
+> ## :open_file_folder: File Tools
+>
+> **- The main file explorer (Tool sets/File Tools/File Explorer) will list out every single file on your SD card**
 > 
-> **- Rename Files:** Allows you to rename any folder/file on your SD card
+> **- Rename Files:** Allows you to rename any folder/file on your SD card.
 > 
-> **- Delete Files:** Allows you to delete any folder/file on your SD card
+> **- Delete Files:** Allows you to delete any folder/file on your SD card.
 
-> ## :minidisc: Programs
+-----------------------------------
+
+> ## :minidisc: Get Programs
 > 
-> **- Run Other Firmware:** Allows you to install and run other firmware within SnailOS
+> **- M5 Store:** Allows you to install various hand selected cardputer firmwares all on your device.
+
+-----------------------------------
+
+> ## :minidisc: Your Programs
 > 
-> **- Firmware "Stores":** Allows you to download firmware directly onto device without the use of another device. All firmware is free, store is just a good word for this. (*Snail's Store* , *M5 store*)
+> **- This wil list out every .bin file on your cardputer, regardless of what folder its in.
 
 -----------------------------------
 
 > # :computer: Connections
 > 
-> **- WebGUI:** Will run a website on a wifi network that allows you to use your M5 Device/SnailOS from that website
+> **- WebGUI:** Will run a website on a wifi network that allows you to access your cardputer's SD card
 
 -----------------------------------
 
@@ -61,3 +52,11 @@ This is my first time making a program for an M5 device, so bare with me on any 
 > **- Custom Boot Image:** Allows you to have a custom jpg image be displayed on launch for 4 seconds
 > 
 > **- Custom Boot Text:** If you dont have a boot image, it will default to showing text on launch for 4 seconds, which you can customize in settings.
+
+-----------------------------------
+
+> ## :gear: Settings Features:
+> 
+> **- Reboot:** will restart the device, and auto load back into SnailOS 
+> 
+> **- Edit Boot Text:** Allows you to edit the text that appears during launch if you dont have a boot image
