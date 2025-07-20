@@ -1,4 +1,4 @@
-# SnailOS-Beta :snail: 
+# SnailOS v0.1 :snail: 
 
 SnailOS is firmware for the cardputer that comes pre packed various tools like displaying images, downloading other firmwares, and more.
 
