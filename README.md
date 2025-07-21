@@ -1,6 +1,6 @@
 # SnailOS v0.1 :snail: 
 
-SnailOS is a non penntesting related firmware for the cardputer that comes pre packed various tools like displaying images, downloading other firmwares, and more.
+SnailOS is a non pentesting related firmware for the cardputer that comes pre packed various tools like displaying images, downloading other firmwares, and more.
 
 # SnailOS v0.1 Features :snail: :
 
